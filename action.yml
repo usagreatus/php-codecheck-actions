@@ -1,33 +1,33 @@
-name: 'Run php check code with reviewdog'
-description: 'Run phpcs, phpmd to check your code'
-author: 'Duc Anh (ducla)'
+name: "Run phpcs, phpmd and report with reviewdog"
+description: "Run phpcs, phpmd to check your code"
+author: "Duc Anh (ducla)"
 inputs:
   github_token:
-    description: 'GITHUB_TOKEN.'
+    description: "GITHUB_TOKEN."
     required: true
   reporter:
-    description: 'Reporter of reviewdog command [github-pr-check,github-pr-review].'
-    default: 'github-pr-check'
+    description: "Reporter of reviewdog command [github-pr-check,github-pr-review]."
+    default: "github-pr-check"
     required: false
   level:
-    description: 'Report level for reviewdog [info,warning,error]'
-    default: 'error'
+    description: "Report level for reviewdog [info,warning,error]"
+    default: "error"
     required: false
   phpcs_args:
-    description: 'Arguments to pass to phpcs'
-    default: '.'
+    description: "Arguments to pass to phpcs"
+    default: "."
     required: false
   phpmd_args:
-    description: 'Arguments to pass to phpmd'
-    default: '.'
+    description: "Arguments to pass to phpmd"
+    default: "."
     required: false
   directory:
-    description: 'The subdirectory to execute the action in.'
-    default: '.'
+    description: "The subdirectory to execute the action in."
+    default: "."
     required: false
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
     - ${{ inputs.github_token }}
     - ${{ inputs.reporter }}
@@ -36,5 +36,5 @@ runs:
     - ${{ inputs.directory }}
     - ${{ inputs.level }}
 branding:
-  icon: 'edit'
-  color: 'gray-dark'
+  icon: "edit"
+  color: "gray-dark"
