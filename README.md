@@ -29,9 +29,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code into the workspace
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Check Code
         uses: eeyon/php-codecheck-actions@v3
         with:
-          phpcs+args: '--exclude */test/*,*Test.php,*/autoload_classmap.php,*.js'
+          phpmd_args: '--exclude */test/*,*Test.php,*/autoload_classmap.php,*.js'
 ```
