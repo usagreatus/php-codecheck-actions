@@ -3,7 +3,7 @@
 cd "$GITHUB_WORKSPACE/${INPUT_DIRECTORY}"
 
 echo "Running Code Sniffer..."
-/usr/local/bin/phpcs.phar${INPUT_PHPCS_ARGS:-\.} > /tmp/phpcs-report.txt
+/usr/local/bin/phpcs.phar ${INPUT_PHPCS_ARGS:-\.} > /tmp/phpcs-report.txt
 
 EXIT_CODE1=$?
 
