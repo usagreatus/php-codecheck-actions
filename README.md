@@ -1,28 +1,12 @@
-# GitHub Action: Run php check code with reviewdog
+# GitHub Action: Run php check codes
 
-This action runs phpcs, phpmd with
-[reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
-code review experience.
+This action runs phpcs, and phpmd
 
 ## Inputs
-
-### `github_token`
-
-**Required**. Must be in form of `github_token: ${{ secrets.github_token }}`'.
-
-### `tool_name`
-
-Optional. Tool name to use for reviewdog reporter. Useful when running multiple
-actions with different config.
 
 ### `directory`
 
 Optional. The subdirectory where your php code resides.
-
-### `reporter`
-
-Optional. Reporter of reviewdog command [github-pr-check,github-pr-review].
-It's same as `-reporter` flag of reviewdog.
 
 ### `phpcs_args`
 
@@ -47,7 +31,7 @@ jobs:
       - name: Check out code into the workspace
         uses: actions/checkout@v2
       - name: Check Code
-        uses: lifulltechvn/laravel-app-reviewdog-action@v1
+        uses: eeyon/laravel-app-reviewdog-action@v2
         with:
-          github_token: ${{ secrets.github_token }}
+          phpcs+args: '--exclude */test/*,*Test.php,*/autoload_classmap.php,*.js'
 ```
