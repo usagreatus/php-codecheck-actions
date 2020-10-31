@@ -2,8 +2,6 @@
 
 cd "$GITHUB_WORKSPACE/${INPUT_DIRECTORY}"
 
-export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
-
 /usr/local/bin/phpcs.phar \
     --report=summary \
     --report-checkstyle=/tmp/phpcs_result_checkstyle.xml \
@@ -16,8 +14,6 @@ cat /tmp/phpcs_result_checkstyle.xml | reviewdog -f=checkstyle -name="phpcs" -re
 EXIT_CODE1=$?
 
 /usr/local/bin/phpmd.phar ${INPUT_PHPMD_ARGS:-\.} text ./phpmd.xml -dmemory_limit=-1 > /tmp/phpmd-report.txt
-
-cat /tmp/phpmd-report.txt | reviewdog -efm="%f:%l %m" -name="phpmd" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
 
 EXIT_CODE2=$?
 
