@@ -31,7 +31,7 @@ jobs:
       - name: Check out code into the workspace
         uses: actions/checkout@v2
       - name: Check Code
-        uses: eeyon/laravel-app-reviewdog-action@v2
+        uses: eeyon/php-codecheck-actions@v3
         with:
           phpcs+args: '--exclude */test/*,*Test.php,*/autoload_classmap.php,*.js'
 ```
